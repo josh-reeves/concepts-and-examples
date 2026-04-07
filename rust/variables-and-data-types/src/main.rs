@@ -34,4 +34,18 @@ fn main()
 
     println!("counter = {}", counter);
 
+    /* Unlike most languages, Rust does not prevent a variable from being
+     *  declared with the same name as an existing variable in the same scope. 
+     *  Instead, the new variable shadows the old one, preventing the original
+     *  from being accessed until it can be removed from memory.
+     * 
+     * This process, called shadowing, can be used to modify a variable's type
+     *  or immutability, or to quickly modify the value of an otherwise
+     *  immutable variable.
+     */
+
+    let name: &str = "Bob"; // Shadows the previous variable named "name"
+
+    println!("name = {}", name);
+
 }
