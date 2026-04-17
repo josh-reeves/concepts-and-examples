@@ -10,11 +10,13 @@ class Program
         try
         {
             AnonymousPipeServerStream serverStream = new(PipeDirection.Out, HandleInheritability.Inheritable);
+
             StreamWriter writer = new StreamWriter(serverStream) 
             { 
                 AutoFlush = true 
                 
             };
+            
             Process client = new Process()
             {
                 StartInfo = new()
@@ -33,8 +35,16 @@ class Program
 
             Console.WriteLine($"[SERVER] Current transmission mode: {serverStream.TransmissionMode}");
 
-            Console.WriteLine("[SERVER] Enter text: ");
-            writer.WriteLine(Console.ReadLine());
+            string msg = string.Empty;
+
+            do
+            {
+                Console.WriteLine("[SERVER] Enter text: ");
+                msg = Console.ReadLine() ?? string.Empty;
+                writer.WriteLine(msg);
+
+            }
+            while(!string.IsNullOrEmpty(msg));
 
             client.WaitForExit();
             client.Close();
