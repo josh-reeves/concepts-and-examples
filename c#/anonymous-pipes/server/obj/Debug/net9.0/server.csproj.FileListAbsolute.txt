@@ -1,0 +1,15 @@
+/Volumes/Extended Storage/Data/Users/josh/repos/concepts-and-examples/c#/anonymous-pipes/server/bin/Debug/net9.0/server
+/Volumes/Extended Storage/Data/Users/josh/repos/concepts-and-examples/c#/anonymous-pipes/server/bin/Debug/net9.0/server.deps.json
+/Volumes/Extended Storage/Data/Users/josh/repos/concepts-and-examples/c#/anonymous-pipes/server/bin/Debug/net9.0/server.runtimeconfig.json
+/Volumes/Extended Storage/Data/Users/josh/repos/concepts-and-examples/c#/anonymous-pipes/server/bin/Debug/net9.0/server.dll
+/Volumes/Extended Storage/Data/Users/josh/repos/concepts-and-examples/c#/anonymous-pipes/server/bin/Debug/net9.0/server.pdb
+/Volumes/Extended Storage/Data/Users/josh/repos/concepts-and-examples/c#/anonymous-pipes/server/obj/Debug/net9.0/server.GeneratedMSBuildEditorConfig.editorconfig
+/Volumes/Extended Storage/Data/Users/josh/repos/concepts-and-examples/c#/anonymous-pipes/server/obj/Debug/net9.0/server.AssemblyInfoInputs.cache
+/Volumes/Extended Storage/Data/Users/josh/repos/concepts-and-examples/c#/anonymous-pipes/server/obj/Debug/net9.0/server.AssemblyInfo.cs
+/Volumes/Extended Storage/Data/Users/josh/repos/concepts-and-examples/c#/anonymous-pipes/server/obj/Debug/net9.0/server.csproj.CoreCompileInputs.cache
+/Volumes/Extended Storage/Data/Users/josh/repos/concepts-and-examples/c#/anonymous-pipes/server/obj/Debug/net9.0/server.sourcelink.json
+/Volumes/Extended Storage/Data/Users/josh/repos/concepts-and-examples/c#/anonymous-pipes/server/obj/Debug/net9.0/server.dll
+/Volumes/Extended Storage/Data/Users/josh/repos/concepts-and-examples/c#/anonymous-pipes/server/obj/Debug/net9.0/refint/server.dll
+/Volumes/Extended Storage/Data/Users/josh/repos/concepts-and-examples/c#/anonymous-pipes/server/obj/Debug/net9.0/server.pdb
+/Volumes/Extended Storage/Data/Users/josh/repos/concepts-and-examples/c#/anonymous-pipes/server/obj/Debug/net9.0/server.genruntimeconfig.cache
+/Volumes/Extended Storage/Data/Users/josh/repos/concepts-and-examples/c#/anonymous-pipes/server/obj/Debug/net9.0/ref/server.dll
