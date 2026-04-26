@@ -5,12 +5,7 @@ import (
 )
 
 func main() {
-	/* Go is a strongly typed language. This means that variables have static,
-	 *	distinct types that cannot be changed or implicitly converted between.
-	 *	Unlike many other languages, Go does not allow any unused local
-	 *	variables.
-	 *
-	 * Go provides two primary ways to declare variables. The first is using the
+	/* Go provides two primary ways to declare variables. The first is using the
 	 *	"var" keyword, followed by the variable's name and type. Variables
 	 *	declared in this manner do not require a value to be assigned to them at
 	 *	the time of creation:*/
@@ -21,6 +16,9 @@ func main() {
 	 *	explicitly assigned to it, Go will implicitly assign a default value to
 	 *	the variable:*/
 	fmt.Println(emptyMsg)
+
+	/* Unlike many other languages, Go does not allow any unused local
+	 *	variables.*/
 
 	/* Variables created with the var keyword can also be declared without an
 	 *	explicit type. In this case, however, a value must be assigned to the
