@@ -23,7 +23,11 @@ int main()
      *  to as statements. In C, each statement must end with a semi-colon. The
      *  statement below calls the printf function located in the stdio.h file.
      *  The printf function outputs the value in parentheses to the console:*/
-    printf("Hello World!");
+    printf("Hello World!\n");
+
+    /* Note that text constants must be surrounded by quotation marks. The '\n'
+     *  at the end of the text. This is an escape sequence which will be 
+     *  replaced with a new line. */
 
     /* The main function returns an integer (whole number) value. Here the value
      *  being returned is 0, which is typically used by the operating system to 
