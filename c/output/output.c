@@ -39,10 +39,14 @@ int main()
     *       Format Specifier        Data Type
     *       %d or %i                integer
     *       %f or %F                float
-    *       %lf                     double
+    *       %lf or %f               double
     *       %c                      char
     *       %s                      string
     */
+
+    /* Note that in newer versions of c, %f can be used for both doubles and
+     *  floats. This is because newer versions of the printf function recast
+     *  floats as doubles. */
 
     return 0;
 
