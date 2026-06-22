@@ -48,19 +48,19 @@ int main()
      *  generally wise to avoid converting from a type to one with less
      *  precision.*/
     float xFloat = x;
-    printf("xFloat: %f", xFloat);
+    printf("xFloat: %f ", xFloat);
 
     /* Explicit conversion, or "casting" occurs when the target type is placed
      *  in parentheses before the value to be converted. In the example below,
-     *  the value of 2/5 will be returned as 2.000...:*/
-    float quotient = 2/5;
-    printf("%f", quotient);
+     *  the value of 5/2 will be returned as 2.000...:*/
+    float quotient = 5/2;
+    printf("quotient: %f ", quotient);
 
     /* This is because both 2 and 5 are integer values. Casting one or both of
      *  the equation's terms as a float will cause it to output the expected
      *  value:*/
-    quotient = (float)2/5;
-    printf("%f", quotient);
+    quotient = (float)5/2;
+    printf("quotient: %f ", quotient);
     
     return 0;
 
