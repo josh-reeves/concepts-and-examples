@@ -31,8 +31,8 @@ int main()
      *  format specifier must have a corresponding variable, and the
      *  corresponding variable must be of the type indicated by the format
      *  specifier in order to avoid errors and/or unexpected behavior:*/
-     int y = 7;
-     printf("The value of x is %d. the value of y is %d.\n", x, y);
+    int y = 7;
+    printf("The value of x is %d. the value of y is %d.\n", x, y);
 
     /* There are a variety of format specifiers. Some of the most common ones
     *   can be found below:
@@ -44,9 +44,16 @@ int main()
     *       %s                      string
     */
 
-    /* Note that in newer versions of c, %f can be used for both doubles and
+    /* Note that in newer versions of C, %f can be used for both doubles and
      *  floats. This is because newer versions of the printf function recast
-     *  floats as doubles. */
+     *  provided floats as doubles. The precision used when outputting either
+     *  data-type can be specified by placing a period and the desired number of
+     *  decimal places between the % symbol and the f:*/
+    float f = 1.58393321;
+    printf("%.8f\n", f);
+
+    double d = 1.5239123532138295;
+    printf("%.16f\n", d);
 
     return 0;
 

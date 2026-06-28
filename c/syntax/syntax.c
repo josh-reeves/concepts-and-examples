@@ -25,7 +25,7 @@ int main()
      *  The printf function outputs the value in parentheses to the console:*/
     printf("Hello World!\n");
 
-    /* Note that text constants must be surrounded by quotation marks.
+    // Note that text constants must be surrounded by quotation marks.
 
     /* The main function returns an integer (whole number) value. Here the value
      *  being returned is 0, which is typically used by the operating system to 
