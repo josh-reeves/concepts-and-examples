@@ -37,6 +37,13 @@ int main()
 
     printf("a: %i\nb: %i\nc: %i\n", a, b, c);
 
+    /* Constants are similar to variables. Unlike variables, however, their
+     *  value cannot be changed after initialization. To declare a constant,
+     *  the const keyword is used, followed by the constant's type and
+     *  identifier:*/
+    const int constant = 95;
+    printf("constant: %i\n", constant);
+
     return 0;
 
 }
