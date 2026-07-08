@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdbool.h>
 
 int main()
 {
@@ -26,6 +27,16 @@ int main()
      *  decimal values up to 15 decimal places in length:*/
     double d = 1.2345678235821;
     printf("d: %.16f ", d);
+
+    /* Booleans represent a true/false value and typically use 1 byte of memory.
+     *  Unlike many other languages, C does not include booleans as a built-in
+     *  type. Instead, they're provided via the stdbool.h header file: */
+    bool flag = false;
+
+    /*  It's important to note that, while bools can be assigned true/false
+     *   values, these values are treated as unsigned integers by the compiler, 
+     *   with 0 representing false and 1 reprsenting true: */
+    printf("flag: %i", flag);
 
     /* C also provides a variety of keywords that can be used to modify the
      *  amount of memory a variable uses, its range, etc., as well as
