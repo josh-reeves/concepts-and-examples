@@ -4,9 +4,9 @@ int main()
 {
     /* Loops alter the flow of a program by repeating a provided block of code
      *  until a provided condition is no longer true. There are three main types
-     *  of loops. */
-
-    /* The while loop repeats the provided block of code while the provided
+     *  of loops.
+     *
+     * The while loop repeats the provided block of code while the provided
      *  condition is true. If the condition is not true at the time of the
      *  loop's execution, the code block is skipped entirely: */
     int num1 = 0;
@@ -53,6 +53,33 @@ int main()
         
     }
 
+    /* The break and continue statements provide additional ways to control the
+     *  execution of a loop. The break statement stops a loop's execution
+     *  whether or not its condition is true: */
+    for (int i = 0; i <= 10; i++)
+    {
+        printf("i = %i\n", i);
+
+        if (i == 5)
+        {
+            break;
+
+        }
+
+    }
+
+    // The continue skips to the next iteration of the loop:
+    for (int i = 0; i <= 10; i++)
+    {
+        if (i == 5)
+        {
+            continue;
+        
+        }
+
+        printf("i = %i\n", i);
+        
+    }
 
     return 0;
     
