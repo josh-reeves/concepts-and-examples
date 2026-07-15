@@ -36,7 +36,12 @@ int main()
     /*  It's important to note that, while bools can be assigned true/false
      *   values, these values are treated as unsigned integers by the compiler, 
      *   with 0 representing false and 1 reprsenting true: */
-    printf("flag: %i", flag);
+    printf("flag: %i, ", flag);
+
+    /* C provides no specific string data type. It does, however, allow arrays
+     *  of characters to be treated as strings syntactically: */
+    char string[] = "This is a \"string\"\n";
+    printf(string);
 
     /* C also provides a variety of keywords that can be used to modify the
      *  amount of memory a variable uses, its range, etc., as well as
@@ -71,7 +76,7 @@ int main()
      *  the equation's terms as a float will cause it to output the expected
      *  value:*/
     quotient = (float)5/2;
-    printf("quotient: %f ", quotient);
+    printf("quotient: %f\n", quotient);
     
     return 0;
 

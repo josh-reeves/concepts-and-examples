@@ -56,6 +56,9 @@ int main()
     bool vertices[4][4][4];
     vertices[3][2][1] = true;
 
+    /* Similarly, this convention can be used to create four-dimensional arrays,
+     *  five dimensional arrays, etc. */
+
     return 0;
 
 }
