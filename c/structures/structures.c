@@ -90,6 +90,7 @@ void UpdateResident(struct Address *addr, struct Name name)
 
 }
 
-/* Note that it isn't uncommon for the C compiler to allocate additiona memory
+/* Note that it isn't uncommon for the C compiler to allocate additional memory
  *  between the members of a structure. This process, referred to as, "padding,"
- */
+ *  is done because many CPUs process data faster when it's cleanly aligned
+ *  in memory. */
