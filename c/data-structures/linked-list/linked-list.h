@@ -81,13 +81,15 @@ void AppendNode(struct Node **target, struct Node *node)
 
 }
 
-void PrependToList(struct LinkedList *list, void *data)
+void Dispose(struct Node *node)
 {
-    Prepend(&list->head, data);
+    struct Node *current = node;
 
-    if (list->tail == NULL)
+    while (current != NULL)
     {
-        list->tail = list->head;
+        free(current);
+
+        current = current->next;
 
     }
 
@@ -97,6 +99,8 @@ void PrependNodeToList(struct LinkedList *list, struct Node *node)
 {
     PrependNode(&list->head, node);
 
+    list->head = node;
+
     if (list->tail == NULL)
     {
         list->tail = list->head;
@@ -105,9 +109,20 @@ void PrependNodeToList(struct LinkedList *list, struct Node *node)
 
 }
 
-void AppendToList(struct LinkedList *list, void *data)
+void PrependToList(struct LinkedList *list, void *data)
 {
-    Append(&list->tail, data);
+    struct Node *node  = calloc(1, sizeof(struct Node));
+    node->data = data;
+
+    PrependNodeToList(list, node);
+
+}
+
+void AppendNodeToList(struct LinkedList *list, struct Node *node)
+{
+    AppendNode(&list->tail, node);
+
+    list->tail = node;
 
     if (list->head == NULL)
     {
@@ -117,15 +132,23 @@ void AppendToList(struct LinkedList *list, void *data)
 
 }
 
-void AppendNodeToList(struct LinkedList *list, struct Node *node)
+void AppendToList(struct LinkedList *list, void *data)
 {
-    AppendNode(&list->tail, node);
+    struct Node *node  = calloc(1, sizeof(struct Node));
+    node->data = data;
 
-    if (list->head == NULL)
-    {
-        list->head = list->tail;
+    AppendNodeToList(list, node);
 
-    }
+}
+
+void DisposeList(struct LinkedList *list)
+{
+    struct Node *current = list->head;
+
+    Dispose(current);
+
+    list->head = NULL;
+    list->tail = NULL;
 
 }
 

@@ -1,18 +1,33 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
 #include "linked-list.h"
 
 int main()
 {
+    int i;
+
+    int data[5];
+    
     struct LinkedList list = {NULL, NULL};
 
-    int data[] = {1, 2, 3, 4, 5};
+    srand(time(NULL));
 
-    int i = 0;
+    for (i = 0; i < sizeof(data) / sizeof(data[0]); i++)
+    {
+        data[i] = rand() % 100;
+
+    }
 
     for (i = 0; i < sizeof(data) / sizeof(data[0]); i++)
     {
         AppendToList(&list, (void *)(&data[i]));
+
+    }
+
+    for (i = 0; i < sizeof(data) / sizeof(data[0]); i++)
+    {
+        PrependToList(&list, (void *)(&data[i]));
 
     }
 
@@ -27,6 +42,8 @@ int main()
         i++;
 
     }
+
+    DisposeList(&list);
 
     return 0;
 
