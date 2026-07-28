@@ -1,4 +1,5 @@
 #include <stdlib.h>
+#include <stdbool.h>
 
 struct Node
 {
@@ -15,21 +16,19 @@ struct LinkedList
 
 };
 
-void Prepend(struct Node **target, void *data)
+unsigned int Count(struct Node *node)
 {
-    struct Node *node = malloc(sizeof(struct Node));
-    node->data = data;
+    unsigned int count = 0;
 
-    if (*target == NULL)
+    while (node != NULL)
     {
-        *target = node;
+        count++;
 
-        return;
-        
+        node = node->next;
+
     }
 
-    (*target)->prev = node;
-    node->next = *target;    
+    return count;
 
 }
 
@@ -48,21 +47,12 @@ void PrependNode(struct Node **target, struct Node *node)
 
 }
 
-void Append(struct Node **target, void *data)
+void Prepend(struct Node **target, void *data)
 {
-    struct Node *node  = calloc(1, sizeof(struct Node));
+    struct Node *node = malloc(sizeof(struct Node));
     node->data = data;
 
-    if (*target == NULL)
-    {
-        *target = node;
-
-        return;
-        
-    }
-
-    (*target)->next = node;
-    node->prev = *target;
+    PrependNode(target, node);  
 
 }
 
@@ -81,17 +71,103 @@ void AppendNode(struct Node **target, struct Node *node)
 
 }
 
-void Dispose(struct Node *node)
+void Append(struct Node **target, void *data)
 {
-    struct Node *current = node;
+    struct Node *node  = calloc(1, sizeof(struct Node));
+    node->data = data;
 
-    while (current != NULL)
+    AppendNode(target, node);
+
+}
+
+void RemoveNode(struct Node *node)
+{
+    if (node->prev != NULL)
     {
-        free(current);
-
-        current = current->next;
+        node->prev->next = node->next;
 
     }
+
+    if (node->next != NULL)
+    {
+        node->next->prev = node->prev;
+
+    }
+
+    free(node);
+
+    node = NULL;
+
+}
+
+void RemoveAllNodes(struct Node **node)
+{
+    while (*node != NULL)
+    {
+        struct Node *next = (*node)->next;
+
+        if ((*node)->prev != NULL)
+        {
+            (*node)->prev->next = NULL;
+
+        }
+
+        if ((*node)->next != NULL)
+        {
+            (*node)->next->prev = NULL;
+
+        }
+
+        free(*node);
+
+        *node = NULL;
+        *node = next;
+
+    }
+
+}
+
+void Remove(void *value, struct Node *node, bool (*compare)(void *, void *))
+{
+    struct Node *cur = node;
+
+    while (cur != NULL)
+    {
+        if (compare(value, cur->data) == true)
+        {
+            RemoveNode(cur);
+
+            return;
+            
+        }
+
+        cur = cur->next;
+
+    }
+
+}
+
+void LocateHead(struct LinkedList *list, struct Node *node)
+{
+    while (node != NULL)
+    {
+        node = node->prev;
+
+    }
+
+    list->head = node;
+
+}
+
+void LocateTail(struct LinkedList *list, struct Node *node)
+{
+    while (node->next != NULL)
+    {
+        node = node->next;
+
+    }
+
+    list->tail = node;
 
 }
 
@@ -141,15 +217,16 @@ void AppendToList(struct LinkedList *list, void *data)
 
 }
 
-void DisposeList(struct LinkedList *list)
+void RemoveFromList(struct LinkedList *list, void *data, bool (*compare)(void *, void *))
 {
-    struct Node *current = list->head;
+    
+}
 
-    Dispose(current);
+void DisposeOfList(struct LinkedList *list)
+{
+    RemoveAllNodes(&list->head);
 
     list->head = NULL;
     list->tail = NULL;
 
 }
-
-
