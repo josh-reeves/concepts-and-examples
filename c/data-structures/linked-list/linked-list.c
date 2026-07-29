@@ -52,6 +52,12 @@ int main()
     Remove((void *)&(int){5}, list.head, compareIntegers);
     printf("The number of nodes in the list is now %i.\n", Count(list.head));
 
+    if (list.head == NULL)
+    {
+        LocateHead(&list, list.tail);
+
+    };
+
     current = list.tail;
 
     i = Count(list.head);
@@ -87,6 +93,21 @@ int main()
     printf("The number of nodes in the list is now %i.\n", Count(list.head));
     printf("The value stored in the head node is now %i.\n", *(int *)(list.head->data));
     printf("The value stored in the tail node is now %i.\n", *(int *)(list.tail->data));    
+
+    current = list.head;
+
+    for (i = 1; current != NULL; i++)
+    {
+        printf("The value stored in node %i is %i.\n", i, *(int *)(current->data));
+        current = current->next;
+
+    }
+
+    RemoveFromList(&list, (void *)&(int){10}, compareIntegers);
+
+    printf("The number of nodes in the list is now %i.\n", Count(list.head));
+    printf("The value stored in the head node is now %i.\n", *(int *)(list.head->data));
+    printf("The value stored in the tail node is now %i.\n", *(int *)(list.tail->data));       
 
     current = list.head;
 

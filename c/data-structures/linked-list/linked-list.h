@@ -217,8 +217,37 @@ void AppendToList(struct LinkedList *list, void *data)
 
 }
 
-void RemoveFromList(struct LinkedList *list, void *data, bool (*compare)(void *, void *))
+void RemoveFromList(struct LinkedList *list, void *value, bool (*compare)(void *, void *))
 {
+    struct Node *cur = list->head;
+
+    while (cur != NULL)
+    {
+        if (!compare(value, cur->data) == true)
+        {
+            cur = cur->next;
+
+            continue;
+
+        }
+
+        if (cur == list->head)
+        {
+            list->head = cur->next;
+
+        }
+
+        if (cur == list->tail)
+        {
+            list->tail = cur->prev;
+
+        }
+
+        RemoveNode(cur);
+
+        return;
+
+    }
     
 }
 
