@@ -1,5 +1,6 @@
 #include <stdlib.h>
 #include <stdbool.h>
+#include <stdio.h>
 
 struct Node
 {
@@ -80,94 +81,59 @@ void Append(struct Node **target, void *data)
 
 }
 
-void RemoveNode(struct Node *node)
+void RemoveNode(struct Node **node)
 {
-    if (node->prev != NULL)
+    if ((*node)->prev != NULL)
     {
-        node->prev->next = node->next;
+        (*node)->prev->next = (*node)->next;
 
     }
 
-    if (node->next != NULL)
+    if ((*node)->next != NULL)
     {
-        node->next->prev = node->prev;
+        (*node)->next->prev = (*node)->prev;
 
     }
 
-    free(node);
+    free(*node);
 
-    node = NULL;
+    *node = NULL;
 
 }
 
-void RemoveAllNodes(struct Node **node)
+void Remove(void *value, struct Node **node, bool (*compare)(void *, void *))
 {
-    while (*node != NULL)
+    while (node != NULL)
     {
-        struct Node *next = (*node)->next;
-
-        if ((*node)->prev != NULL)
+        if (compare(value, (*node)->data))
         {
-            (*node)->prev->next = NULL;
-
-        }
-
-        if ((*node)->next != NULL)
-        {
-            (*node)->next->prev = NULL;
-
-        }
-
-        free(*node);
-
-        *node = NULL;
-        *node = next;
-
-    }
-
-}
-
-void Remove(void *value, struct Node *node, bool (*compare)(void *, void *))
-{
-    struct Node *cur = node;
-
-    while (cur != NULL)
-    {
-        if (compare(value, cur->data) == true)
-        {
-            RemoveNode(cur);
+            RemoveNode(node);
 
             return;
             
         }
 
-        cur = cur->next;
+        node = &(*node)->next;
 
     }
 
 }
 
-void LocateHead(struct LinkedList *list, struct Node *node)
+void RemoveNodeAndChildren(struct Node **node)
 {
-    while (node != NULL)
+    while (*node != NULL)
     {
-        node = node->prev;
+        struct Node *next = (*node)->next;
+
+        (*node)->prev = NULL;
+        (*node)->next = NULL;
+
+        free(*node);
+        *node = NULL;
+
+        *node = next;
 
     }
-
-    list->head = node;
-
-}
-
-void LocateTail(struct LinkedList *list, struct Node *node)
-{
-    while (node->next != NULL)
-    {
-        node = node->next;
-
-    }
-
-    list->tail = node;
 
 }
 
@@ -219,27 +185,28 @@ void AppendToList(struct LinkedList *list, void *data)
 
 void RemoveFromList(struct LinkedList *list, void *value, bool (*compare)(void *, void *))
 {
-    struct Node *cur = list->head;
+    struct Node **cur = &list->head;
 
     while (cur != NULL)
     {
-        if (!compare(value, cur->data) == true)
+        if (!compare(value, (*cur)->data))
         {
-            cur = cur->next;
+            cur = &(*cur)->next;
 
             continue;
 
         }
 
-        if (cur == list->head)
+        if (cur == &list->head)
         {
-            list->head = cur->next;
+            list->head = list->head->next;
+            cur = &list->head->prev;
 
         }
 
-        if (cur == list->tail)
+        if (cur == &list->tail)
         {
-            list->tail = cur->prev;
+            list->tail = list->tail->prev;
 
         }
 
@@ -253,9 +220,44 @@ void RemoveFromList(struct LinkedList *list, void *value, bool (*compare)(void *
 
 void DisposeOfList(struct LinkedList *list)
 {
-    RemoveAllNodes(&list->head);
+    struct Node **node = &list->head;
 
-    list->head = NULL;
-    list->tail = NULL;
+    while (*node != NULL)
+    {
+        struct Node *next = (*node)->next;
+
+        (*node)->prev = NULL;
+        (*node)->next = NULL;
+        
+        free(*node);
+        *node = NULL;
+
+        *node = next;
+
+    }
+
+}
+
+void LocateHead(struct LinkedList *list, struct Node *node)
+{
+    while (node->prev != NULL)
+    {
+        node = node->prev;
+
+    }
+
+    list->head = node;
+
+}
+
+void LocateTail(struct LinkedList *list, struct Node *node)
+{
+    while (node->next != NULL)
+    {
+        node = node->next;
+
+    }
+
+    list->tail = node;
 
 }
