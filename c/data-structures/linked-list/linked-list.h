@@ -121,19 +121,20 @@ void Remove(void *value, struct Node **node, bool (*compare)(void *, void *))
 
 void RemoveNodeAndChildren(struct Node **node)
 {
-    while (*node != NULL)
+    struct Node *cur = *node,
+                *next = NULL;
+
+    while (cur != NULL)
     {
-        struct Node *next = (*node)->next;
+        next = cur->next;
 
-        (*node)->prev = NULL;
-        (*node)->next = NULL;
+        free(cur);
 
-        free(*node);
-        *node = NULL;
-
-        *node = next;
+        cur = next;
 
     }
+
+    *node = NULL;
 
 }
 
@@ -220,21 +221,10 @@ void RemoveFromList(struct LinkedList *list, void *value, bool (*compare)(void *
 
 void DisposeOfList(struct LinkedList *list)
 {
-    struct Node **node = &list->head;
+    RemoveNodeAndChildren(&list->head);
 
-    while (*node != NULL)
-    {
-        struct Node *next = (*node)->next;
-
-        (*node)->prev = NULL;
-        (*node)->next = NULL;
-        
-        free(*node);
-        *node = NULL;
-
-        *node = next;
-
-    }
+    list->head = NULL;
+    list->tail = NULL;
 
 }
 

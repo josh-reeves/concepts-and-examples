@@ -10,7 +10,7 @@ int main()
 {
     int i;
 
-    int data[50];
+    int data[25];
     
     struct LinkedList list = {NULL, NULL};
 
@@ -65,12 +65,26 @@ int main()
     printf("The value stored in the head node is now %i.\n", *(int *)(list.head->data));
     printf("The value stored in the tail node is now %i.\n", *(int *)(list.tail->data));
 
+    RemoveNodeAndChildren(&list.head);
+    list.tail = NULL;
+
     for (i = 0; i < sizeof(data) / sizeof(data[0]); i++)
     {
-        struct Node *node = calloc(1, sizeof(struct Node));
-        node->data = data;
+        insert = calloc(1, sizeof(struct Node));
+        insert->data = (void*)&data[i];
 
-        AppendNodeToList(&list, node);
+        AppendNodeToList(&list, insert);
+
+    }
+
+    printf("The number of nodes in the list is now %i.\n", Count(list.head));
+
+    cur = &list.head;
+
+    for (i = 1; *cur != NULL; i++)
+    {
+        printf("The value stored in node %i is %i.\n", i, *(int *)((*cur)->data));
+        cur = &(*cur)->next;
 
     }
 
