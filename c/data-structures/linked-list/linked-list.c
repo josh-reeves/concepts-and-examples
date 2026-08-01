@@ -88,6 +88,28 @@ int main()
 
     }
 
+    RemoveHead(&list);
+
+    printf("The number of nodes in the list is now %i.\n", Count(list.head));
+    printf("The value stored in the head node is now %i.\n", *(int *)(list.head->data));
+    printf("The value stored in the tail node is now %i.\n", *(int *)(list.tail->data));
+
+    RemoveTail(&list);
+
+    printf("The number of nodes in the list is now %i.\n", Count(list.head));
+    printf("The value stored in the head node is now %i.\n", *(int *)(list.head->data));
+    printf("The value stored in the tail node is now %i.\n", *(int *)(list.tail->data));
+
+    cur = &list.head;
+
+    for (i = 1; *cur != NULL; i++)
+    {
+        printf("The value stored in node %i is %i.\n", i, *(int *)((*cur)->data));
+        cur = &(*cur)->next;
+
+    }
+
+
     DisposeOfList(&list);
 
     printf("The number of nodes in the list is now %i.\n", Count(list.head));

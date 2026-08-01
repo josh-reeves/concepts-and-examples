@@ -228,6 +228,38 @@ void DisposeOfList(struct LinkedList *list)
 
 }
 
+void RemoveHead(struct LinkedList *list)
+{
+    if (list->head == NULL)
+    {
+        return;
+
+    }
+
+    struct Node *next = list->head->next;
+
+    RemoveNode(&list->head);
+
+    list->head = next;
+
+}
+
+void RemoveTail(struct LinkedList *list)
+{
+    if (list->tail == NULL)
+    {
+        return;
+
+    }
+
+    struct Node *prev = list->tail->prev;
+
+    RemoveNode(&list->tail);
+
+    list->tail = prev;
+
+}
+
 void LocateHead(struct LinkedList *list, struct Node *node)
 {
     while (node->prev != NULL)
